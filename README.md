@@ -35,6 +35,18 @@ mdl .
 hadolint **/Dockerfile
 ```
 
+## Building using docker-compose
+
+```bash
+docker-compose build
+```
+
+## Running applications using docker-compose
+
+```bash
+docker-compose up
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
