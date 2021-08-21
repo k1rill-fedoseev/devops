@@ -1,15 +1,12 @@
-# DevOps assignment 1
+# DevOps assignment 1 (Bonus)
 
 This is a simple http server which displays current time in the specific timezone.
 
 ## Run natively
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install dependencies.
-
 ```bash
-cd app_python
-pip install -r requirements.txt
-main:app
+cd app_golang
+go run main.go
 ```
 
 ## Run using Docker
@@ -17,7 +14,7 @@ main:app
 Build and run the image using Docker.
 
 ```bash
-docker build -t devops app_python
+docker build -t devops app_golang
 docker run --rm -p 8000:8000 devops
 ```
 
@@ -25,12 +22,12 @@ docker run --rm -p 8000:8000 devops
 
 We are using the following linters for this repository:
 
-* [Pylint](https://www.pylint.org)
+* [Golangcilint](https://golangci-lint.run)
 * [MarkdownLint](https://github.com/markdownlint/markdownlint)
 * [Hadolint](https://github.com/hadolint/hadolint)
 
 ```bash
-pylint app_python
+golangci-lint run ./app_golang/**/*.go
 mdl .
 hadolint **/Dockerfile
 ```
