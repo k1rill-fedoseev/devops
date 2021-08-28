@@ -1,5 +1,7 @@
 # DevOps assignment 1
 
+![app_python](https://github.com/k1rill-fedoseev/devops/actions/workflows/app_python.yml/badge.svg)
+
 This is a simple http server which displays current time in the specific timezone.
 
 ## Run natively
