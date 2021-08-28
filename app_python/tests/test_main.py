@@ -1,3 +1,7 @@
+'''Flask app unit-tests'''
+
+# pylint: disable=redefined-outer-name
+
 import time
 import re
 
@@ -7,6 +11,7 @@ from app.main import create_app
 
 @pytest.fixture
 def client():
+    '''Client creation fixture'''
     app = create_app()
 
     with app.test_client() as client:
@@ -14,14 +19,15 @@ def client():
 
 
 def test_main_page(client):
-    r1 = client.get('/')
+    '''Main page unit-test'''
+    r_1 = client.get('/')
     time.sleep(1)
-    r2 = client.get('/')
+    r_2 = client.get('/')
 
-    assert b'Europe/Moscow' in r1.data
-    assert b'Europe/Moscow' in r2.data
-    t1 = re.search(r'\d\d:\d\d:\d\d', str(r1.data)).group(0)
-    t2 = re.search(r'\d\d:\d\d:\d\d', str(r2.data)).group(0)
-    assert t1 is not None
-    assert t2 is not None
-    assert t1 != t2
+    assert b'Europe/Moscow' in r_1.data
+    assert b'Europe/Moscow' in r_2.data
+    t_1 = re.search(r'\d\d:\d\d:\d\d', str(r_1.data)).group(0)
+    t_2 = re.search(r'\d\d:\d\d:\d\d', str(r_2.data)).group(0)
+    assert t_1 is not None
+    assert t_2 is not None
+    assert t_1 != t_2

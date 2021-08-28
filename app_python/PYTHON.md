@@ -1,4 +1,6 @@
-# List of used best practices
+# Best practices for Python app
+
+## Application best practices
 
 * Use Production ready web-framework - **Flask**
 * Use popular python linter - **pylint**
@@ -11,7 +13,7 @@
 * Include `.gitignore` for skipping irrelevant files in the Git VCS
 * Include `.dockerignore` for reducing docker context size
 
-# List of unit-test best practices
+## Unit test best practices
 
 * Use popular testing framework (e.g. pytest)
 * Use fixtures to create dependencies

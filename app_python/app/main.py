@@ -7,6 +7,7 @@ from pytz import timezone
 from flask import Flask, render_template
 
 def create_app():
+    '''Flask App factory'''
     app = Flask(__name__, template_folder='../templates')
 
     timezone_name = os.environ.get('TIMEZONE', 'Europe/Moscow')
