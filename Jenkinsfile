@@ -6,9 +6,13 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
                 sh 'pip install -r app_python/requirements.test.txt -r app_python/requirements.txt'
             }
         }
