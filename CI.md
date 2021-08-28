@@ -10,5 +10,6 @@
 
 ## Jenkins related best-practices
 
-* Correctly setup credentials to GitHub and other external services for efficient access.
+* Correctly setup credentials to GitHub and other
+  external services for efficient access.
 * Use docker agent for running jobs inside of it
