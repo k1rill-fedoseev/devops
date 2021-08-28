@@ -10,3 +10,8 @@
 * Use **Jinja** templates instead of hardcoding html strings in the source code
 * Include `.gitignore` for skipping irrelevant files in the Git VCS
 * Include `.dockerignore` for reducing docker context size
+
+# List of unit-test best practices
+
+* Use popular testing framework (e.g. pytest)
+* Use fixtures to create dependencies

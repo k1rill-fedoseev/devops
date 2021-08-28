@@ -35,6 +35,12 @@ mdl .
 hadolint **/Dockerfile
 ```
 
+## Run unit-test
+
+```
+pytest
+```
+
 ## Building using docker-compose
 
 ```bash

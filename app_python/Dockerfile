@@ -17,5 +17,5 @@ EXPOSE 8000
 
 USER user
 
-ENTRYPOINT ["gunicorn", "main:app"]
+ENTRYPOINT ["gunicorn", "app.wsgi:app"]
 CMD ["-b", "0.0.0.0:8000"]
