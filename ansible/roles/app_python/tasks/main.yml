@@ -1,0 +1,24 @@
+- name: Make dir
+  file:
+    dest: '{{ app_python_dir }}'
+    state: directory
+    mode: 0755
+    recurse: yes
+  become: yes
+- name: Copy docker-compose.yml
+  copy:
+    src: ../../../docker-compose.prod.yml
+    dest: '{{ app_python_dir }}/docker-compose.yml'
+    mode: 0755
+  become: yes
+- name: Start services
+  community.docker.docker_compose:
+    project_src: '{{ app_python_dir }}'
+    build: no
+    restarted: yes
+  register: output
+  become: yes
+
+- name: Print output
+  ansible.builtin.debug:
+    var: output

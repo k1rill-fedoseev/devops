@@ -1,0 +1,2 @@
+[docker]
+3.69.212.108 ansible_user=ubuntu
