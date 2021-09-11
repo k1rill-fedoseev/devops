@@ -5,8 +5,20 @@ services:
     build: app_python
     ports:
       - 8000:8000
+    logging:
+      driver: "json-file"
+      options: 
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+        max-size: "200k"
+        max-file: "10"
   app_golang:
     image: kirillfedoseev/app_golang:latest
     build: app_golang
     ports:
       - 8001:8000
+    logging:
+      driver: "json-file"
+      options: 
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+        max-size: "200k"
+        max-file: "10"

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -37,6 +38,7 @@ func GetEnv(key, def string) string {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("received new request", r.URL.Path)
 	err := mainTemplate.Execute(w, &PageData{
 		TimezoneName: timezone.String(),
 		Time:         time.Now().In(timezone).Format(GetEnv("TIME_FORMAT", "15:04:05")),
