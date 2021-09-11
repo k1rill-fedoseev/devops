@@ -5,7 +5,18 @@
 Logs are collected from all docker containers on the system,
 including monitoring stack itself + 2 containers with applications.
 
-![](./success.png)
+![](./screenshots/success.png)
+
+## Prometheus screenshots
+
+Configured targets
+
+![](./screenshots/targets.png)
+
+Configured dashboards
+
+![](./screenshots/loki.png)
+![](./screenshots/prometheus.png)
 
 ## Best practices
 

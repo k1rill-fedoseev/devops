@@ -11,6 +11,14 @@ services:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
         max-size: "200k"
         max-file: "10"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 200M
+        reservations:
+          cpus: '0.02'
+          memory: 100M
   app_golang:
     image: kirillfedoseev/app_golang:latest
     build: app_golang
@@ -22,3 +30,11 @@ services:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
         max-size: "200k"
         max-file: "10"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 100M
+        reservations:
+          cpus: '0.01'
+          memory: 50M
