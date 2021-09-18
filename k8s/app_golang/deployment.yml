@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-golang
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-golang
+  template:
+    metadata:
+      labels:
+        app: app-golang
+    spec:
+      containers:
+      - name: app-golang
+        image: kirillfedoseev/app_golang:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 8000
