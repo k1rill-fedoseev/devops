@@ -4,6 +4,9 @@
 
 This is a simple http server which displays current time in the specific timezone.
 
+Application also displays the time when the `/` url was first accessed
+at the `/visits` url.
+
 ## Run natively
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install dependencies.

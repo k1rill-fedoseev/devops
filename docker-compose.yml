@@ -11,6 +11,8 @@ services:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
         max-size: "200k"
         max-file: "10"
+    volumes:
+      - ./files:/app/files
     deploy:
       resources:
         limits:
