@@ -1,13 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "app-python.fullname" . }}
   labels:
     {{- include "app-python.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
+  serviceName: {{ include "app-python.fullname" . }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  podManagementPolicy: {{ .Values.podManagementPolicy }}
   selector:
     matchLabels:
       {{- include "app-python.selectorLabels" . | nindent 6 }}
@@ -49,6 +49,9 @@ spec:
           - name: config-volume
             mountPath: /config.json
             subPath: config.json
+          volumeMounts:
+          - name: {{ include "app-python.fullname" . }}-files
+            mountPath: /app/files
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
@@ -73,3 +76,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ include "app-python.fullname" . }}-files
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
