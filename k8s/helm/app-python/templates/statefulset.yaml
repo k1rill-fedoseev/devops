@@ -49,9 +49,10 @@ spec:
           - name: config-volume
             mountPath: /config.json
             subPath: config.json
-          volumeMounts:
           - name: {{ include "app-python.fullname" . }}-files
             mountPath: /app/files
+          - name: workdir
+            mountPath: "/work-dir"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
@@ -60,10 +61,23 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
                   key: password
+      initContainers:
+        - name: install
+          image: busybox
+          command:
+            - wget
+            - "-O"
+            - "/work-dir/example.html"
+            - https://example.com
+          volumeMounts:
+            - name: workdir
+              mountPath: "/work-dir"
       volumes:
         - name: config-volume
           configMap:
             name: app-python-cm
+        - name: workdir
+          emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
